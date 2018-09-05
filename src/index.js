@@ -27,13 +27,8 @@ class CalendarData {
         return calendarData
     }
     makeFirstData() {
-        const weeks = ['日','月','火','水','木','金','土']
         const getData =  this.getData(year, month)
 
-        console.log(weeks)
-        console.log(getData.unshift({day:'',weekday:1}))
-        console.log(getData[0])
-        console.log(getData[0].weekday)
         let week = getData[0].weekday
 
         while(week > 0) {
@@ -44,7 +39,6 @@ class CalendarData {
             })
         }
         console.log(getData)
-
     }
 }
 

@@ -3,11 +3,11 @@ const month = 8
 
 class CalendarData {
     execute() {
-        const firstArray =  this.makeFirstData()
-        const mainArray = this.makeData(year, month)
-        const lastArray = this.makeLastData()
+        const firstAry =  this.makeFirstData()
+        const mainAry = this.makeData(year, month)
+        const lastAry = this.makeLastData()
 
-        return firstArray.concat(mainArray, lastArray)
+        return firstAry.concat(mainAry, lastAry)
     }
     makeData(year, month) {
         // 初日の情報
@@ -66,7 +66,7 @@ class CalendarData {
 }
 
 const calendarData = new CalendarData()
-calendarData.execute()
+console.log(calendarData.execute())
 
 //今日の年月日を取得
 const dat = new Date()

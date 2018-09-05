@@ -46,3 +46,21 @@ class GetYMD {
         return week[dat.getDay()]
     }
 }
+
+const getYMD = new GetYMD()
+const titleYear = document.getElementById('title-year')
+const titleMonth = document.getElementById('title-month')
+
+//HTMLに出力
+class OutPut {
+    year() {
+        titleYear.textContent = `${getYMD.getYear()}年`
+    }
+    month() {
+        titleMonth.textContent = `${getYMD.getMonth()+1}月`
+    }
+}
+
+const outPut = new OutPut()
+outPut.year()
+outPut.month()

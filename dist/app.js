@@ -67,8 +67,10 @@
 /* 0 */
 /***/ (function(module, exports) {
 
+// 基本情報たち
 const year = 2018
 const month = 8
+const week = ['日','月','火','水','木','金','土']
 
 class CalendarData {
     execute() {
@@ -134,8 +136,41 @@ class CalendarData {
     }
 }
 
-const calendarData = new CalendarData()
-console.log(calendarData.execute())
+const calendarData = new CalendarData().execute()
+console.log(calendarData)
+
+//HTMLに出力
+class OutPut {
+    execute() {
+        this.year()
+        this.month()
+        this.weeks()
+    }
+    year() {
+        const titleYear = document.getElementById('title-year')
+        titleYear.textContent = `${year}年`
+    }
+    month() {
+        const titleMonth = document.getElementById('title-month')
+        titleMonth.textContent = `${month}月`
+    }
+    weeks() {
+        let putWeeks = ''
+        putWeeks += '<p>'
+
+        for(let i =0; i < week.length; i++) {
+            putWeeks += '<span>'
+            putWeeks += week[i]
+            putWeeks += '</span>'
+        }
+        putWeeks += '</p>'
+
+        const calendarWeeks = document.getElementById('calendar-weeks')
+        calendarWeeks.innerHTML = putWeeks
+    }
+}
+
+new OutPut().execute()
 
 //今日の年月日を取得
 const dat = new Date()
@@ -151,29 +186,10 @@ class GetYMD {
         return dat.getDate()
     }
     getWeek() {
-        const week = ['日','月','火','水','木','金','土']
         return week[dat.getDay()]
     }
 }
-
 const getYMD = new GetYMD()
-const titleYear = document.getElementById('title-year')
-const titleMonth = document.getElementById('title-month')
-
-//HTMLに出力
-class OutPut {
-    year() {
-        titleYear.textContent = `${getYMD.getYear()}年`
-    }
-    month() {
-        titleMonth.textContent = `${getYMD.getMonth()+1}月`
-    }
-}
-
-const outPut = new OutPut()
-outPut.year()
-outPut.month()
-
 
 /***/ })
 /******/ ]);

@@ -2,7 +2,14 @@ const year = 2018
 const month = 8
 
 class CalendarData {
-    getData(year, month) {
+    execute() {
+        const firstArray =  this.makeFirstData()
+        const mainArray = this.makeData(year, month)
+        const lastArray = this.makeLastData()
+
+        return firstArray.concat(mainArray, lastArray)
+    }
+    makeData(year, month) {
         // 初日の情報
         const firstDate = new Date(year,(month -1),1)
         // 初日の曜日
@@ -27,39 +34,39 @@ class CalendarData {
         return calendarData
     }
     makeFirstData() {
-        const getData =  this.getData(year, month)
+        const makeData =  this.makeData(year, month)
 
-        let week = getData[0].weekday
+        let week = makeData[0].weekday
+        const makeFirstWeek = []
 
         while(week > 0) {
             week--
-            getData.unshift({
+            makeFirstWeek.unshift({
                 day: '',
                 weekday: week
             })
         }
-        console.log(getData)
+        return makeFirstWeek
     }
     makeLastData() {
-        const getData =  this.getData(year, month)
+        const makeData =  this.makeData(year, month)
 
-        let week = getData[getData.length -1].weekday
+        let week = makeData[makeData.length -1].weekday
+        const makeLastWeek = []
 
         while(week < 6) {
             week++
-            getData.push({
+            makeLastWeek.push({
                 day: '',
                 weekday: week
             })
         }
-        console.log(getData)
+        return makeLastWeek
     }
 }
 
 const calendarData = new CalendarData()
-console.log(calendarData.getData(year, month))
-calendarData.makeFirstData()
-console.log(calendarData.makeLastData())
+calendarData.execute()
 
 //今日の年月日を取得
 const dat = new Date()

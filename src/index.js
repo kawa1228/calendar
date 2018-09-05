@@ -40,11 +40,26 @@ class CalendarData {
         }
         console.log(getData)
     }
+    makeLastData() {
+        const getData =  this.getData(year, month)
+
+        let week = getData[getData.length -1].weekday
+
+        while(week < 6) {
+            week++
+            getData.push({
+                day: '',
+                weekday: week
+            })
+        }
+        console.log(getData)
+    }
 }
 
 const calendarData = new CalendarData()
 console.log(calendarData.getData(year, month))
-console.log(calendarData.makeFirstData())
+calendarData.makeFirstData()
+console.log(calendarData.makeLastData())
 
 //今日の年月日を取得
 const dat = new Date()

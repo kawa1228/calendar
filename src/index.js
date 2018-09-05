@@ -29,3 +29,20 @@ getCalendarData = (year, month) => {
 const year = 2018
 const month = 8
 console.log(getCalendarData(year, month))
+
+//今日の年月日を取得
+class GetYMD {
+    getYear() {
+        return dat.getFullYear()
+    }
+    getMonth() {
+        return dat.getMonth()
+    }
+    getDate() {
+        return dat.getDate()
+    }
+    getWeek() {
+        const week = ['日','月','火','水','木','金','土']
+        return week[dat.getDay()]
+    }
+}

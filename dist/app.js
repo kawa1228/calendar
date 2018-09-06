@@ -202,14 +202,24 @@ outPut.execute()
 
 const prevBtn =  document.getElementById('calendar-prev')
 prevBtn.addEventListener('click',()=> {
-    month--
+    if(month <= 1) {
+        year--
+        month = 12
+    } else {
+        month--
+    }
     calendarData.execute()
     outPut.execute()
 })
 
 const nextBtn = document.getElementById('calendar-next')
 nextBtn.addEventListener('click',()=> {
-    month++
+    if(month >= 12) {
+        year++
+        month = 1
+    } else {
+        month++
+    }
     calendarData.execute()
     outPut.execute()
 })

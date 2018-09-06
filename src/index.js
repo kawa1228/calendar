@@ -1,6 +1,7 @@
 // 基本情報たち
-const year = 2018
-const month = 10
+const dat = new Date()
+let year = dat.getFullYear()
+let month = dat.getMonth()+1
 const week = ['日','月','火','水','木','金','土']
 
 class CalendarData {
@@ -44,7 +45,7 @@ class CalendarData {
         while(week > 0) {
             week--
             makeFirstWeek.unshift({
-                day: '',
+                day: '&emsp;&nbsp;',
                 weekday: week
             })
         }
@@ -59,7 +60,7 @@ class CalendarData {
         while(week < 6) {
             week++
             makeLastWeek.push({
-                day: '',
+                day: '&emsp;&nbsp;',
                 weekday: week
             })
         }
@@ -68,7 +69,6 @@ class CalendarData {
 }
 
 const calendarData = new CalendarData().execute()
-console.log(calendarData)
 
 //HTMLに出力
 class OutPut {
@@ -118,27 +118,12 @@ class OutPut {
                 putDays += '</span>'
             }
         }
-        document.getElementById('calendar-days').innerHTML = putDays
+
+        let change = /<span>(\d)<\/span>/g
+        let newPutDays = putDays.replace(change, '<span>&nbsp;$1&nbsp;</span>')
+
+        document.getElementById('calendar-days').innerHTML = newPutDays
     }
 }
 
 new OutPut().execute()
-
-//今日の年月日を取得
-const dat = new Date()
-
-class GetYMD {
-    getYear() {
-        return dat.getFullYear()
-    }
-    getMonth() {
-        return dat.getMonth()
-    }
-    getDate() {
-        return dat.getDate()
-    }
-    getWeek() {
-        return week[dat.getDay()]
-    }
-}
-const getYMD = new GetYMD()

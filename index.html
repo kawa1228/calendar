@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="./dist/app.css">
   </head>
 <body>
+  <h1>calendar</h1>
   <div class="main">
-    <h1>calendar</h1>
     <div class="calendar-title">
       <button id="calendar-prev">＜</button>
       <div id="calender-ym">
@@ -17,7 +17,10 @@
       <button id="calendar-next">＞</button>
     </div>
     <hr>
-    <div id="calendar-weeks"></div>
+    <div class="calendar-wrapper">
+      <div id="calendar-weeks"></div>
+      <div id="calendar-days"></div>
+    </div>
   </div>
   <script src="./dist/app.js"></script>
 </body>

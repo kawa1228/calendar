@@ -1,6 +1,6 @@
 // 基本情報たち
 const year = 2018
-const month = 8
+const month = 10
 const week = ['日','月','火','水','木','金','土']
 
 class CalendarData {
@@ -76,6 +76,7 @@ class OutPut {
         this.year()
         this.month()
         this.weeks()
+        this.days()
     }
     year() {
         const titleYear = document.getElementById('title-year')
@@ -87,17 +88,37 @@ class OutPut {
     }
     weeks() {
         let putWeeks = ''
-        putWeeks += '<p>'
 
         for(let i =0; i < week.length; i++) {
             putWeeks += '<span>'
             putWeeks += week[i]
             putWeeks += '</span>'
         }
-        putWeeks += '</p>'
 
         const calendarWeeks = document.getElementById('calendar-weeks')
         calendarWeeks.innerHTML = putWeeks
+    }
+    days() {
+        let putDays = ''
+
+        for(let i = 0; i < calendarData.length; i++) {
+            if(calendarData[i].weekday === 0) {
+                putDays += '<div class="week-wrapper">'
+                putDays += '<span>'
+                putDays += calendarData[i].day
+                putDays += '</span>'
+            } else if(calendarData[i].weekday === 6) {
+                putDays += '<span>'
+                putDays += calendarData[i].day
+                putDays += '</span>'  
+                putDays += '</div>'                              
+            } else  {
+                putDays += '<span>'
+                putDays += calendarData[i].day
+                putDays += '</span>'
+            }
+        }
+        document.getElementById('calendar-days').innerHTML = putDays
     }
 }
 

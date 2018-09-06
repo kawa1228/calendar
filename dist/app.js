@@ -137,7 +137,8 @@ class CalendarData {
     }
 }
 
-const calendarData = new CalendarData().execute()
+const calendarData = new CalendarData()
+calendarData.execute()
 
 //HTMLに出力
 class OutPut {
@@ -168,34 +169,51 @@ class OutPut {
         calendarWeeks.innerHTML = putWeeks
     }
     days() {
+        let cData = calendarData.execute()
         let putDays = ''
 
-        for(let i = 0; i < calendarData.length; i++) {
-            if(calendarData[i].weekday === 0) {
+        for(let i = 0; i < cData.length; i++) {
+            if(cData[i].weekday === 0) {
                 putDays += '<div class="week-wrapper">'
                 putDays += '<span>'
-                putDays += calendarData[i].day
+                putDays += cData[i].day
                 putDays += '</span>'
-            } else if(calendarData[i].weekday === 6) {
+            } else if(cData[i].weekday === 6) {
                 putDays += '<span>'
-                putDays += calendarData[i].day
+                putDays += cData[i].day
                 putDays += '</span>'  
                 putDays += '</div>'                              
             } else  {
                 putDays += '<span>'
-                putDays += calendarData[i].day
+                putDays += cData[i].day
                 putDays += '</span>'
             }
         }
 
-        let change = /<span>(\d)<\/span>/g
-        let newPutDays = putDays.replace(change, '<span>&nbsp;$1&nbsp;</span>')
+        const change = /<span>(\d)<\/span>/g
+        const newPutDays = putDays.replace(change, '<span>&nbsp;$1&nbsp;</span>')
 
         document.getElementById('calendar-days').innerHTML = newPutDays
     }
 }
 
-new OutPut().execute()
+const outPut = new OutPut()
+outPut.execute()
+
+const prevBtn =  document.getElementById('calendar-prev')
+prevBtn.addEventListener('click',()=> {
+    month--
+    calendarData.execute()
+    outPut.execute()
+})
+
+const nextBtn = document.getElementById('calendar-next')
+nextBtn.addEventListener('click',()=> {
+    month++
+    calendarData.execute()
+    outPut.execute()
+})
+
 
 /***/ })
 /******/ ]);

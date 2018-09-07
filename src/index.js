@@ -1,3 +1,10 @@
+import * as main from './script/main'
+const piyo = new main.Piyo()
+piyo.execute()
+
+const piyoko = 'ぴよ'
+console.log(piyoko)
+
 // 基本情報たち
 const dat = new Date()
 let year = dat.getFullYear()
@@ -45,7 +52,7 @@ class CalendarData {
         while(week > 0) {
             week--
             makeFirstWeek.unshift({
-                day: '&emsp;&nbsp;',
+                day: '',
                 weekday: week
             })
         }
@@ -60,7 +67,7 @@ class CalendarData {
         while(week < 6) {
             week++
             makeLastWeek.push({
-                day: '&emsp;&nbsp;',
+                day: '',
                 weekday: week
             })
         }
@@ -122,7 +129,7 @@ class OutPut {
         }
 
         const change = /<span>(\d)<\/span>/g
-        const newPutDays = putDays.replace(change, '<span>&nbsp;$1&nbsp;</span>')
+        const newPutDays = putDays.replace(change, '<span>$1</span>')
 
         document.getElementById('calendar-days').innerHTML = newPutDays
     }
@@ -154,3 +161,4 @@ nextBtn.addEventListener('click',()=> {
     calendarData.execute()
     outPut.execute()
 })
+

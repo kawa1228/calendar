@@ -65,7 +65,17 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__script_main__ = __webpack_require__(1);
+
+const piyo = new __WEBPACK_IMPORTED_MODULE_0__script_main__["a" /* Piyo */]()
+piyo.execute()
+
+const piyoko = 'ぴよ'
+console.log(piyoko)
 
 // 基本情報たち
 const dat = new Date()
@@ -114,7 +124,7 @@ class CalendarData {
         while(week > 0) {
             week--
             makeFirstWeek.unshift({
-                day: '&emsp;&nbsp;',
+                day: '',
                 weekday: week
             })
         }
@@ -129,7 +139,7 @@ class CalendarData {
         while(week < 6) {
             week++
             makeLastWeek.push({
-                day: '&emsp;&nbsp;',
+                day: '',
                 weekday: week
             })
         }
@@ -191,7 +201,7 @@ class OutPut {
         }
 
         const change = /<span>(\d)<\/span>/g
-        const newPutDays = putDays.replace(change, '<span>&nbsp;$1&nbsp;</span>')
+        const newPutDays = putDays.replace(change, '<span>$1</span>')
 
         document.getElementById('calendar-days').innerHTML = newPutDays
     }
@@ -223,6 +233,31 @@ nextBtn.addEventListener('click',()=> {
     calendarData.execute()
     outPut.execute()
 })
+
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export main */
+function main () {
+    console.log('hello')
+}
+
+class Piyo {
+    execute() {
+        this.piyoko()
+    }
+    piyoko() {
+        const piyoko = 'piyopiyo!'
+        console.log(piyoko)
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Piyo;
+
+
 
 
 /***/ })

@@ -193,15 +193,15 @@ class OutPut {
                 putDays += cData[i].day
                 putDays += '</span>'  
                 putDays += '</div>'                              
-            } else  {
+            } else {
                 putDays += '<span>'
                 putDays += cData[i].day
                 putDays += '</span>'
             }
         }
 
-        const change = /<span>(\d)<\/span>/g
-        const newPutDays = putDays.replace(change, '<span>$1</span>')
+         const change = /<span>(\d+)<\/span>/g
+         const newPutDays = putDays.replace(change, '<span class="this-month">$1</span>')
 
         document.getElementById('calendar-days').innerHTML = newPutDays
     }

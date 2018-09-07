@@ -71,16 +71,13 @@
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__script_main__ = __webpack_require__(1);
 
-const piyo = new __WEBPACK_IMPORTED_MODULE_0__script_main__["a" /* Piyo */]()
-piyo.execute()
-
-const piyoko = 'ぴよ'
-console.log(piyoko)
+__WEBPACK_IMPORTED_MODULE_0__script_main__["a" /* hello */]()
 
 // 基本情報たち
 const dat = new Date()
 let year = dat.getFullYear()
 let month = dat.getMonth()+1
+let today = dat.getDate()
 const week = ['日','月','火','水','木','金','土']
 
 class CalendarData {
@@ -203,7 +200,10 @@ class OutPut {
          const change = /<span>(\d+)<\/span>/g
          const newPutDays = putDays.replace(change, '<span class="this-month">$1</span>')
 
-        document.getElementById('calendar-days').innerHTML = newPutDays
+         const todaySpan = new RegExp('<span class="this-month">' + today + '</span>');
+         const a = newPutDays.replace(todaySpan, '<span class="this-month today">' + today + '</span>');
+
+        document.getElementById('calendar-days').innerHTML = a;
     }
 }
 
@@ -235,29 +235,15 @@ nextBtn.addEventListener('click',()=> {
 })
 
 
-
 /***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export main */
-function main () {
-    console.log('hello')
+const hello = ()=> {
+    console.log('hello!')
 }
-
-class Piyo {
-    execute() {
-        this.piyoko()
-    }
-    piyoko() {
-        const piyoko = 'piyopiyo!'
-        console.log(piyoko)
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = Piyo;
-
-
+/* harmony export (immutable) */ __webpack_exports__["a"] = hello;
 
 
 /***/ })

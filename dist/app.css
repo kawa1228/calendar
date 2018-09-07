@@ -1,5 +1,5 @@
 body {
-    font-family: 'Montserrat','M PLUS 1p', sans-serif;   
+    font-family: 'M PLUS 1p', 'Montserrat', sans-serif;   
 }
 #calendar-prev, #calendar-next {
   display: inline-block;

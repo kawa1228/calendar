@@ -1,14 +1,11 @@
 import * as main from './script/main'
-const piyo = new main.Piyo()
-piyo.execute()
-
-const piyoko = 'ぴよ'
-console.log(piyoko)
+main.hello()
 
 // 基本情報たち
 const dat = new Date()
 let year = dat.getFullYear()
 let month = dat.getMonth()+1
+let today = dat.getDate()
 const week = ['日','月','火','水','木','金','土']
 
 class CalendarData {
@@ -131,7 +128,10 @@ class OutPut {
          const change = /<span>(\d+)<\/span>/g
          const newPutDays = putDays.replace(change, '<span class="this-month">$1</span>')
 
-        document.getElementById('calendar-days').innerHTML = newPutDays
+         const todaySpan = new RegExp('<span class="this-month">' + today + '</span>');
+         const a = newPutDays.replace(todaySpan, '<span class="this-month today">' + today + '</span>');
+
+        document.getElementById('calendar-days').innerHTML = a;
     }
 }
 
@@ -161,4 +161,3 @@ nextBtn.addEventListener('click',()=> {
     calendarData.execute()
     outPut.execute()
 })
-

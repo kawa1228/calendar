@@ -9,12 +9,10 @@ body {
   line-height: 30px;
   border-radius: 50%;
 }
-
 #calendar-prev:hover, #calendar-next:hover {
     background: #dcdcdc;
     transition: .4s;
 }
-
 .this-month {
     display: inline-block;
     text-decoration: none;
@@ -24,9 +22,20 @@ body {
     background: #bcddeb;
     transition: .4s;
 }
+.today-style {
+    color: white;
+    background: #299ecc;
+}
+.today-style:hover {
+    background: #299ecc;
+}
 body {
   width: 300px;
-  margin: auto; }
+  margin: auto;
+  margin-top: 20px;
+  padding: 5px;
+  height: 285px;
+  border: solid 1px #bcddeb; }
 
 .header {
   display: flex;
@@ -86,7 +95,8 @@ i:hover {
 
 .week-wrapper {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+  margin-bottom: 4px; }
 
 button {
   background-color: transparent;

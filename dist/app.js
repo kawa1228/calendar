@@ -201,7 +201,7 @@ class OutPut {
          const newPutDays = putDays.replace(change, '<span class="this-month">$1</span>')
 
          const todaySpan = new RegExp('<span class="this-month">' + today + '</span>');
-         const a = newPutDays.replace(todaySpan, '<span class="this-month today">' + today + '</span>');
+         const a = newPutDays.replace(todaySpan, '<span class="this-month today-style">' + today + '</span>');
 
         document.getElementById('calendar-days').innerHTML = a;
     }

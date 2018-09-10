@@ -154,14 +154,17 @@ class OutPut {
         this.month()
         this.weeks()
         this.days()
+        this.makePutData()
     }
     year() {
         const titleYear = document.getElementById('title-year')
         titleYear.textContent = `${year}年`
+        return year
     }
     month() {
         const titleMonth = document.getElementById('title-month')
         titleMonth.textContent = `${month}月`
+        return month
     }
     weeks() {
         let putWeeks = ''
@@ -196,19 +199,30 @@ class OutPut {
                 putDays += '</span>'
             }
         }
+        return putDays
+    }
+    makePutData() {
+        const change = /<span>(\d+)<\/span>/g
+        const newPutDays = this.days().replace(change, '<span class="this-month">$1</span>')
 
-         const change = /<span>(\d+)<\/span>/g
-         const newPutDays = putDays.replace(change, '<span class="this-month">$1</span>')
+        const todaySpan = new RegExp('<span class="this-month">' + today + '</span>')
+        const putToday = newPutDays.replace(todaySpan, '<span class="this-month today-style">' + today + '</span>')
 
-         const todaySpan = new RegExp('<span class="this-month">' + today + '</span>');
-         const a = newPutDays.replace(todaySpan, '<span class="this-month today-style">' + today + '</span>');
+        document.getElementById('calendar-days').innerHTML = putToday
 
-        document.getElementById('calendar-days').innerHTML = a;
+        return putToday
     }
 }
 
 const outPut = new OutPut()
 outPut.execute()
+
+const changeTodayStyle = ()=> {
+    const deleteDay = new RegExp('<span class="this-month today-style">' + today + '</span>')
+    const deleteToday = outPut.makePutData().replace(deleteDay, '<span class="this-month">' + today + '</span>')
+
+    document.getElementById('calendar-days').innerHTML = deleteToday
+}
 
 const prevBtn =  document.getElementById('calendar-prev')
 prevBtn.addEventListener('click',()=> {
@@ -218,8 +232,11 @@ prevBtn.addEventListener('click',()=> {
     } else {
         month--
     }
-    calendarData.execute()
-    outPut.execute()
+    if(outPut.year() !== dat.getFullYear() || outPut.month() !== dat.getMonth()+1) {
+        changeTodayStyle()
+    } else {
+        outPut.execute()
+    }
 })
 
 const nextBtn = document.getElementById('calendar-next')
@@ -230,8 +247,11 @@ nextBtn.addEventListener('click',()=> {
     } else {
         month++
     }
-    calendarData.execute()
-    outPut.execute()
+    if(outPut.year() !== dat.getFullYear() || outPut.month() !== dat.getMonth()+1) {
+        changeTodayStyle()
+    } else {
+        outPut.execute()
+    }
 })
 
 
